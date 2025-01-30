@@ -1,3 +1,7 @@
+#MAC adresini alır.
+#MacVendors API'sine sorgu yaparak üreticiyi belirler.
+#JSON formatında bir çıktı döndürür.
+
 import requests
 import json
 
