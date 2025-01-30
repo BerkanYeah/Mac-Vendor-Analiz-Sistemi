@@ -1,0 +1,23 @@
+{
+    "parametre_adi": {
+        "tip": "veri_tipi",
+        "açıklama": "parametre açıklaması"
+    }
+}
+Opsiyonel Parametreler:
+
+{
+    "parametre_adi": {
+        "tip": "veri_tipi",
+        "varsayılan": "değer",
+        "açıklama": "parametre açıklaması"
+    }
+}
+Çıktı Formatı
+{
+    "sonuç": {
+        "durum": "başarılı/başarısız",
+        "veri": {},
+        "hata_mesajı": "varsa hata açıklaması"
+    }
+}
