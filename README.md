@@ -93,3 +93,41 @@ nmap (opsiyonel, daha derinlemesine ağ taraması için)
 arp-scan (opsiyonel, ARP tabanlı taramalar için)
 
 Bu sistem, ağ güvenliğini sağlamak ve bilinmeyen cihazları tespit etmek için etkili bir analiz aracı sunmaktadır.
+
+6. Kurulum Talimatları
+
+1. Python Kurulumu
+
+Python'un en az 3.8 sürümünün yüklü olduğundan emin olun. Eğer yüklü değilse, Python Resmi Sitesi üzerinden yükleyebilirsiniz.
+
+2. Gerekli Kütüphanelerin Yüklenmesi
+
+Aşağıdaki komutları kullanarak gerekli kütüphaneleri yükleyin:
+
+pip install scapy requests pandas argparse sqlite3
+
+3. Ek Araçların Kurulumu (Opsiyonel)
+
+Eğer nmap veya arp-scan kullanmak istiyorsanız, aşağıdaki komutları çalıştırarak yükleyebilirsiniz:
+
+Linux İçin:
+
+sudo apt update && sudo apt install nmap arp-scan
+
+macOS İçin:
+
+brew install nmap arp-scan
+
+Windows İçin:
+
+Nmap Download adresinden indirip kurabilirsiniz.
+
+2320191060- Berkan Adar
+
+arp-scan doğrudan Windows için mevcut değildir, ancak bir Linux alt sistemi (WSL) kullanarak çalıştırabilirsiniz.
+
+4. Uygulamanın Çalıştırılması
+
+python mac_vendor_analiz.py --mac_adresi 44:38:39:ff:ef:57 --detayli_analiz True
+
+Bu komut, belirtilen MAC adresi için analiz yapacak ve detaylı analiz seçeneği aktif hale gelecektir.
