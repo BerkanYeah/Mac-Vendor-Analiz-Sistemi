@@ -1,2 +1,2 @@
-# Mac-Vendor-Analiz-Sistemi
-İleri Sızma Projesi
+Mac Vendor Analiz Sistemi Projesinin Amacı Ve Genel İşleyişi:
+
