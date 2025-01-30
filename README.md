@@ -122,8 +122,6 @@ Windows İçin:
 
 Nmap Download adresinden indirip kurabilirsiniz.
 
-2320191060- Berkan Adar
-
 arp-scan doğrudan Windows için mevcut değildir, ancak bir Linux alt sistemi (WSL) kullanarak çalıştırabilirsiniz.
 
 4. Uygulamanın Çalıştırılması
@@ -131,3 +129,61 @@ arp-scan doğrudan Windows için mevcut değildir, ancak bir Linux alt sistemi (
 python mac_vendor_analiz.py --mac_adresi 44:38:39:ff:ef:57 --detayli_analiz True
 
 Bu komut, belirtilen MAC adresi için analiz yapacak ve detaylı analiz seçeneği aktif hale gelecektir.
+
+API Endpoint: GET /api/vendor/{mac_address}
+Açıklama: Bu endpoint, kullanıcıdan bir MAC adresi alır ve bu adresin hangi cihaza ait olduğunu ve üreticisini döndürür.
+
+Örnek JSON Yanıtı:
+json
+{
+  "mac_address": "00:14:22:01:23:45",
+  "vendor": {
+    "name": "Cisco Systems, Inc.",
+    "address": "170 West Tasman Dr., San Jose, CA 95134-1706",
+    "country": "US",
+    "phone": "+1-800-553-6387",
+    "website": "https://www.cisco.com"
+  },
+  "device": {
+    "type": "Router",
+    "model": "Cisco ISR 4000",
+    "serial_number": "1234567890ABC",
+    "release_date": "2016-05-15"
+  },
+  "mac_details": {
+    "assigned": "Yes",
+    "block_start": "00:14:22",
+    "block_end": "00:14:22",
+    "organization": "Cisco"
+  }
+}
+Diğer Olası Yanıtlar:
+1. Geçersiz MAC Adresi:
+Eğer geçerli bir MAC adresi verilmezse, API bir hata mesajı döndürebilir.
+
+Örnek Yanıt:
+
+json
+Kopyala
+Düzenle
+{
+  "error": "Invalid MAC address format",
+  "message": "Please provide a valid MAC address"
+}
+2. Bilinmeyen Üretici:
+Eğer MAC adresi veritabanında bulunmazsa, API şu şekilde bir yanıt verebilir:
+
+Örnek Yanıt:
+
+json
+{
+  "mac_address": "00:00:00:00:00:00",
+  "error": "Vendor not found",
+  "message": "No vendor information found for the provided MAC address"
+}
+API Kullanım Senaryoları:
+MAC Adresi ile Cihaz Tanımlama: Kullanıcılar, bir cihazın MAC adresini vererek üretici bilgisini öğrenebilirler.
+Cihaz Türü Bilgisi: Kullanıcılar, cihazın türünü (örneğin router, laptop) öğrenebilirler.
+Vendor Veritabanı: Bu API, bir cihazın üretici bilgilerini sağlayarak donanım envanteri yönetimi veya güvenlik analizleri gibi uygulamalarda kullanılabilir.
+
+2320191060-BERKAN ADAR
