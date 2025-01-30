@@ -1,0 +1,44 @@
+import requests
+import json
+
+def mac_vendor_analiz(mac_adresi):
+    api_url = f"https://api.macvendors.com/{mac_adresi}"
+    
+    try:
+        response = requests.get(api_url)
+        if response.status_code == 200:
+            uretici = response.text
+            sonuc = {
+                "sonuç": {
+                    "durum": "başarılı",
+                    "veri": {
+                        "mac_adresi": mac_adresi,
+                        "uretici": uretici,
+                        "kategori": "Bilinmiyor",
+                        "tehdit_seviyesi": "Düşük"
+                    },
+                    "hata_mesajı": ""
+                }
+            }
+        else:
+            sonuc = {
+                "sonuç": {
+                    "durum": "başarısız",
+                    "veri": {},
+                    "hata_mesajı": "MAC adresi bulunamadı veya API erişim hatası."
+                }
+            }
+    except Exception as e:
+        sonuc = {
+            "sonuç": {
+                "durum": "başarısız",
+                "veri": {},
+                "hata_mesajı": str(e)
+            }
+        }
+    
+    return json.dumps(sonuc, indent=4, ensure_ascii=False)
+
+# Örnek kullanım
+mac_adresi = "44:38:39:ff:ef:57"
+print(mac_vendor_analiz(mac_adresi))
